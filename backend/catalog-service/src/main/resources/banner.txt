@@ -1,0 +1,7 @@
+${AnsiColor.BLUE}    __    _      ${AnsiColor.WHITE}      ${AnsiColor.RED}      __
+${AnsiColor.BLUE}   / /_  (_)___ _${AnsiColor.WHITE}      ${AnsiColor.RED}_____/ /_  ____  ____
+${AnsiColor.BLUE}  / __ \/ / __ `/${AnsiColor.WHITE}_____${AnsiColor.RED}/ ___/ __ \/ __ \/ __ \
+${AnsiColor.BLUE} / /_/ / / /_/ /${AnsiColor.WHITE}_____${AnsiColor.RED}(__  ) / / / /_/ / /_/ /
+${AnsiColor.BLUE}/_.___/_/\__, /  ${AnsiColor.WHITE}   ${AnsiColor.RED}/____/_/ /_/\____/ .___/
+${AnsiColor.BLUE}        /____/   ${AnsiColor.WHITE}   ${AnsiColor.RED}                /_/
+${AnsiColor.DEFAULT}By fcazalet

@@ -1,0 +1,28 @@
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+  db:
+    build:
+      context: .
+      dockerfile: postgresql/Dockerfile
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_MULTIPLE_DATABASES: db1,db2
+      POSTGRES_USER: myapp
+      POSTGRES_PASSWORD: examplepassword
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
+  keycloak:
+    build:
+      context: .
+      dockerfile: keycloak/Dockerfile
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: change_me
+    ports:
+      - "8443:8443"
+      - "9000:9000"
