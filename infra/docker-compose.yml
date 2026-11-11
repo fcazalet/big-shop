@@ -5,22 +5,25 @@ services:
       - "80:80"
       - "443:443"
   db:
-    build:
-      context: .
-      dockerfile: postgresql/Dockerfile
+    image: postgres:16
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_MULTIPLE_DATABASES: db1,db2
-      POSTGRES_USER: myapp
-      POSTGRES_PASSWORD: examplepassword
+      POSTGRES_MULTIPLE_DATABASES: keycloak:kuser:kpass,customer:user1:pass1,catalog:user1:pass1
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: changeme
     volumes:
+      - ./postgresql/create-multiple-postgresql-databases.sh:/docker-entrypoint-initdb.d/create-multiple-postgresql-databases.sh
       - ./postgresql/data:/var/lib/postgresql/data
   keycloak:
     build:
       context: .
       dockerfile: keycloak/Dockerfile
     environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://db:5432/keycloak
+      KC_DB_USERNAME: kuser
+      KC_DB_PASSWORD: kpass
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
       KC_BOOTSTRAP_ADMIN_PASSWORD: change_me
     ports:
