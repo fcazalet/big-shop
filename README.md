@@ -2,6 +2,48 @@
 
 🚧Under construction🚧
 
+## Architecture
+ This work is a portfolio example, currently in development
+
+```mermaid
+flowchart LR
+    subgraph Shop Customer
+        Frontstore[Frontstore Web App]
+    end
+    subgraph Admin User
+        Admin[Admin Web App]
+    end
+    subgraph Services
+        API[API gateway]
+        Customer[Customer service]
+        Catalog[Catalog service]
+        Order[Order service]
+    end
+    subgraph Security
+        Keycloak[Keycloak]
+        KeycloakDB[(Keycloak DB)]
+    end
+    subgraph Storage
+        CustomerDB[(Orders DB)]
+        CatalogDB[(Orders DB)]
+        OrderDB[(Orders DB)]
+    end
+    Frontstore -->|Login| Keycloak
+    Keycloak --> |AccessToken| Frontstore
+    Frontstore --> API
+    Admin -->|Login| Keycloak
+    Keycloak --> |AccessToken| Admin
+    Admin --> API
+    API -. Token Validation .-> Keycloak
+    Keycloak --> KeycloakDB
+    API --> Customer
+    API --> Catalog
+    API --> Order
+    Customer --> CustomerDB
+    Catalog --> CatalogDB
+    Order --> OrderDB
+```
+
 ## Run local dev
 
 ### Prerequisites
