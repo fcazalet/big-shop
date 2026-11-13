@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+spring:
+  output:
+    ansi:
+      enabled: always
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            # /api/customers/** -> customer-service /customers/**
+            - id: customer-service
+              uri: ${CUSTOMER_SERVICE_URL:http://localhost:8081}
+              predicates:
+                - Path=/api/customers/**
+              filters:
+                - StripPrefix=1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+app:
+  security:
+    cors-allowed-origins:
+      - http://localhost:4200
+      - http://localhost:4300
+      - http://shop.localhost
+      - http://admin.localhost
+    shop:
+      issuer: ${KEYCLOAK_PUBLIC_URL:http://localhost:8180}/realms/shop
+      jwk-set-uri: ${KEYCLOAK_INTERNAL_URL:http://localhost:8180}/realms/shop/protocol/openid-connect/certs
+      audience: shop-api
+    admin:
+      issuer: ${KEYCLOAK_PUBLIC_URL:http://localhost:8180}/realms/admin
+      jwk-set-uri: ${KEYCLOAK_INTERNAL_URL:http://localhost:8180}/realms/admin/protocol/openid-connect/certs
+      audience: admin-api
