@@ -17,6 +17,7 @@ flowchart LR
         API[API gateway]
         Customer[Customer service]
         Catalog[Catalog service]
+        Cart[Cart service]
         Order[Order service]
     end
     subgraph Security
@@ -26,6 +27,7 @@ flowchart LR
     subgraph Storage
         CustomerDB[(Orders DB)]
         CatalogDB[(Orders DB)]
+        CartDB[(Cart DB)]
         OrderDB[(Orders DB)]
     end
     Frontstore -->|Login| Keycloak
@@ -38,9 +40,11 @@ flowchart LR
     Keycloak --> KeycloakDB
     API --> Customer
     API --> Catalog
+    API --> Cart
     API --> Order
     Customer --> CustomerDB
     Catalog --> CatalogDB
+    Cart --> CartDB
     Order --> OrderDB
 ```
 
