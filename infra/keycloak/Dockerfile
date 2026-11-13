@@ -1,4 +1,4 @@
-FROM quay.io/keycloak/keycloak:latest AS builder
+FROM quay.io/keycloak/keycloak:26.8.2 AS builder
 
 # Enable health and metrics support
 ENV KC_HEALTH_ENABLED=true
@@ -21,4 +21,4 @@ ENV KC_DB_URL=<DBURL>
 ENV KC_DB_USERNAME=<DBUSERNAME>
 ENV KC_DB_PASSWORD=<DBPASSWORD>
 ENV KC_HOSTNAME=localhost
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start"]
+# ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start"]

@@ -1,0 +1,176 @@
+{
+  "realm": "admin",
+  "displayName": "Admin",
+  "enabled": true,
+  "sslRequired": "external",
+
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "editUsernameAllowed": false,
+  "verifyEmail": true,
+  "resetPasswordAllowed": true,
+  "rememberMe": false,
+
+  "internationalizationEnabled": true,
+  "supportedLocales": ["fr", "en"],
+  "defaultLocale": "en",
+
+  "bruteForceProtected": true,
+  "permanentLockout": false,
+  "failureFactor": 3,
+  "waitIncrementSeconds": 300,
+  "maxFailureWaitSeconds": 3600,
+  "maxDeltaTimeSeconds": 43200,
+
+  "accessTokenLifespan": 300,
+  "ssoSessionIdleTimeout": 1200,
+  "ssoSessionMaxLifespan": 28800,
+  "revokeRefreshToken": true,
+  "refreshTokenMaxReuse": 0,
+
+  "passwordPolicy": "length(14) and upperCase(1) and lowerCase(1) and digits(1) and specialChars(1) and notUsername and notEmail and passwordHistory(5)",
+
+  "otpPolicyType": "totp",
+  "otpPolicyAlgorithm": "HmacSHA1",
+  "otpPolicyDigits": 6,
+  "otpPolicyPeriod": 30,
+  "otpPolicyLookAheadWindow": 1,
+
+  "eventsEnabled": true,
+  "eventsExpiration": 2592000,
+  "adminEventsEnabled": true,
+  "adminEventsDetailsEnabled": true,
+
+  "smtpServer": {
+    "host": "mailpit",
+    "port": "1025",
+    "from": "no-reply@admin.localhost",
+    "fromDisplayName": "Shop Admin",
+    "auth": "false",
+    "ssl": "false",
+    "starttls": "false"
+  },
+
+  "requiredActions": [
+    {
+      "alias": "CONFIGURE_TOTP",
+      "name": "Configure OTP",
+      "providerId": "CONFIGURE_TOTP",
+      "enabled": true,
+      "defaultAction": true,
+      "priority": 10
+    },
+    {
+      "alias": "UPDATE_PASSWORD",
+      "name": "Update Password",
+      "providerId": "UPDATE_PASSWORD",
+      "enabled": true,
+      "defaultAction": false,
+      "priority": 20
+    },
+    {
+      "alias": "VERIFY_EMAIL",
+      "name": "Verify Email",
+      "providerId": "VERIFY_EMAIL",
+      "enabled": true,
+      "defaultAction": false,
+      "priority": 30
+    }
+  ],
+
+  "roles": {
+    "realm": [
+      { "name": "catalog-manager", "description": "Catalog management" },
+      { "name": "order-manager", "description": "Order management" },
+      { "name": "support", "description": "Customer support (read access + limited actions)" },
+      {
+        "name": "admin",
+        "description": "Administrator (includes all business roles)",
+        "composite": true,
+        "composites": {
+          "realm": ["catalog-manager", "order-manager", "support"]
+        }
+      }
+    ]
+  },
+
+  "clients": [
+    {
+      "clientId": "admin",
+      "name": "Admin Angular",
+      "enabled": true,
+      "publicClient": true,
+      "protocol": "openid-connect",
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "rootUrl": "http://localhost:4300",
+      "baseUrl": "/",
+      "redirectUris": [
+        "http://localhost:4300/*",
+        "http://admin.localhost/*"
+      ],
+      "webOrigins": [
+        "http://localhost:4300",
+        "http://admin.localhost"
+      ],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "http://localhost:4300/*##http://admin.localhost/*"
+      },
+      "protocolMappers": [
+        {
+          "name": "audience-admin-api",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.custom.audience": "admin-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true"
+          }
+        },
+        {
+          "name": "realm-roles-flat",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-realm-role-mapper",
+          "consentRequired": false,
+          "config": {
+            "claim.name": "roles",
+            "multivalued": "true",
+            "jsonType.label": "String",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "identity-service",
+      "name": "User administration service (optional)",
+      "enabled": true,
+      "publicClient": false,
+      "protocol": "openid-connect",
+      "clientAuthenticatorType": "client-secret",
+      "secret": "${IDENTITY_SERVICE_SECRET}",
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true
+    }
+  ],
+
+  "users": [
+    {
+      "username": "service-account-identity-service",
+      "enabled": true,
+      "serviceAccountClientId": "identity-service",
+      "clientRoles": {
+        "realm-management": ["manage-users", "view-users", "query-users", "view-realm"]
+      }
+    }
+  ]
+}

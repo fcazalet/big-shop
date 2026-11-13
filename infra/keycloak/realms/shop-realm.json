@@ -1,0 +1,147 @@
+{
+  "realm": "shop",
+  "displayName": "Shop",
+  "enabled": true,
+  "sslRequired": "external",
+
+  "registrationAllowed": false,
+  "registrationEmailAsUsername": true,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "editUsernameAllowed": false,
+  "verifyEmail": true,
+  "resetPasswordAllowed": true,
+  "rememberMe": true,
+
+  "internationalizationEnabled": true,
+  "supportedLocales": ["fr", "en"],
+  "defaultLocale": "en",
+
+  "bruteForceProtected": true,
+  "permanentLockout": false,
+  "failureFactor": 5,
+  "waitIncrementSeconds": 60,
+  "maxFailureWaitSeconds": 900,
+  "maxDeltaTimeSeconds": 43200,
+
+  "accessTokenLifespan": 300,
+  "ssoSessionIdleTimeout": 1800,
+  "ssoSessionMaxLifespan": 36000,
+  "ssoSessionIdleTimeoutRememberMe": 604800,
+  "ssoSessionMaxLifespanRememberMe": 2592000,
+  "revokeRefreshToken": true,
+  "refreshTokenMaxReuse": 0,
+
+  "passwordPolicy": "length(12) and notUsername and notEmail",
+
+  "eventsEnabled": true,
+  "eventsExpiration": 604800,
+  "adminEventsEnabled": true,
+  "adminEventsDetailsEnabled": true,
+
+  "smtpServer": {
+    "host": "mailpit",
+    "port": "1025",
+    "from": "no-reply@shop.localhost",
+    "fromDisplayName": "Shop",
+    "auth": "false",
+    "ssl": "false",
+    "starttls": "false"
+  },
+
+  "roles": {
+    "realm": [
+      { "name": "customer", "description": "Shop customer" }
+    ]
+  },
+
+  "defaultRole": {
+    "name": "default-roles-shop",
+    "description": "Default roles for customers",
+    "composite": true,
+    "clientRole": false,
+    "composites": {
+      "realm": ["offline_access", "uma_authorization", "customer"],
+      "client": { "account": ["view-profile", "manage-account"] }
+    }
+  },
+
+  "clients": [
+    {
+      "clientId": "storefront",
+      "name": "Storefront Angular",
+      "enabled": true,
+      "publicClient": true,
+      "protocol": "openid-connect",
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "rootUrl": "http://localhost:4200",
+      "baseUrl": "/",
+      "redirectUris": [
+        "http://localhost:4200/*",
+        "http://shop.localhost/*"
+      ],
+      "webOrigins": [
+        "http://localhost:4200",
+        "http://shop.localhost"
+      ],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "http://localhost:4200/*##http://shop.localhost/*"
+      },
+      "protocolMappers": [
+        {
+          "name": "audience-shop-api",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.custom.audience": "shop-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true"
+          }
+        },
+        {
+          "name": "realm-roles-flat",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-realm-role-mapper",
+          "consentRequired": false,
+          "config": {
+            "claim.name": "roles",
+            "multivalued": "true",
+            "jsonType.label": "String",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "customer-registration",
+      "name": "Registration service (customer-service)",
+      "enabled": true,
+      "publicClient": false,
+      "protocol": "openid-connect",
+      "clientAuthenticatorType": "client-secret",
+      "secret": "${CUSTOMER_REGISTRATION_SECRET}",
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true
+    }
+  ],
+
+  "users": [
+    {
+      "username": "service-account-customer-registration",
+      "enabled": true,
+      "serviceAccountClientId": "customer-registration",
+      "clientRoles": {
+        "realm-management": ["manage-users", "view-users"]
+      }
+    }
+  ]
+}
