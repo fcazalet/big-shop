@@ -72,3 +72,10 @@ Run the configured script bootstrap-admin.sh to create the first admin user in K
 
 If having trouble on creation and need to retry, just go to the Keycloak console http://localhost:8180/ and delete the user in the realm.
 Then run the script again.
+
+### Build Gateway & Services
+
+Just run maven command in backend folder:
+
+    cd backend/
+    mvn clean install

@@ -1,13 +1,15 @@
 server:
   port: 8081
-  servlet:
-    context-path: /api/v1
 spring:
   output:
     ansi:
       enabled: always
   application:
     name: customer-service
+  mvc:
+    apiversion:
+      use:
+        header: API-Version
 
 management:
   endpoints:
