@@ -22,8 +22,9 @@ public class RegistrationService {
     }
 
     /**
-     * Never reveals whether the email is already registered: an existing account
-     * is silently ignored so the response is identical (avoids email enumeration).
+     * Register customer, no error returned if exists (hide mail exists)
+     *
+     * @param request
      */
     public void register(RegistrationRequest request) {
         String email = request.email().trim().toLowerCase(Locale.ROOT);

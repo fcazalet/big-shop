@@ -10,6 +10,12 @@ spring:
     apiversion:
       use:
         header: API-Version
+  jpa:
+    hibernate:
+      ddl-auto: validate # NEVER CHANGE IT
+    open-in-view: false
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
 
 management:
   endpoints:
@@ -27,7 +33,6 @@ app:
       base-url: ${KEYCLOAK_INTERNAL_URL:http://localhost:8180}
       realm: shop
       client-id: customer-registration
-      # No default on purpose: the service must fail fast if the secret is missing
       client-secret: ${CUSTOMER_REGISTRATION_SECRET}
       verification-client-id: storefront
       verification-redirect-uri: http://localhost:4200/
