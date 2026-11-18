@@ -19,14 +19,10 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    @GetMapping(path = "/{id}", version = "1")
-    public ResponseEntity<AccountInformationResponse> readAccountV1(@PathVariable String id,
-                                                                    @AuthenticationPrincipal Jwt jwt) {
-        if (!id.equals(jwt.getSubject())) {
-            return ResponseEntity.notFound().build(); // do not reveal whether the id exists
-        }
+    @GetMapping(path = "/me", version = "1")
+    public ResponseEntity<AccountInformationResponse> readAccountV1(@AuthenticationPrincipal Jwt jwt) {
         try {
-            Long lId = Long.parseLong(id);
+            Long lId = Long.parseLong(jwt.getSubject());
             AccountInformationResponse response = accountService.readAccount(lId);
             return ResponseEntity.ok(response);
         } catch (NumberFormatException e) {

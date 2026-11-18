@@ -13,6 +13,12 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String email;
+    @OneToOne(mappedBy = "customer")
+    @JoinColumn(name = "default_shipping_address_id", referencedColumnName = "id")
+    private CustomerAddress defaultShippingAddress;
+    @OneToOne(mappedBy = "customer")
+    @JoinColumn(name = "default_invoice_address_id", referencedColumnName = "id")
+    private CustomerAddress defaultInvoiceAddress;
     @CreatedDate
     @Column(name = "created_at")
     private Date createdAt;
@@ -34,6 +40,22 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public CustomerAddress getDefaultShippingAddress() {
+        return defaultShippingAddress;
+    }
+
+    public void setDefaultShippingAddress(CustomerAddress defaultShippingAddress) {
+        this.defaultShippingAddress = defaultShippingAddress;
+    }
+
+    public CustomerAddress getDefaultInvoiceAddress() {
+        return defaultInvoiceAddress;
+    }
+
+    public void setDefaultInvoiceAddress(CustomerAddress defaultInvoiceAddress) {
+        this.defaultInvoiceAddress = defaultInvoiceAddress;
     }
 
     public Date getCreatedAt() {

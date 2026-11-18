@@ -17,7 +17,7 @@ public class RegistrationService {
 
     private final KeycloakAdminClient keycloak;
 
-    RegistrationService(KeycloakAdminClient keycloak) {
+    public RegistrationService(KeycloakAdminClient keycloak) {
         this.keycloak = keycloak;
     }
 

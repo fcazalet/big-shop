@@ -18,7 +18,7 @@ public class AccountService {
     private final KeycloakAdminClient keycloak;
     private final CustomerRepository customerRepository;
 
-    AccountService(KeycloakAdminClient keycloak, CustomerRepository customerRepository) {
+    public AccountService(KeycloakAdminClient keycloak, CustomerRepository customerRepository) {
         this.keycloak = keycloak;
         this.customerRepository = customerRepository;
     }
