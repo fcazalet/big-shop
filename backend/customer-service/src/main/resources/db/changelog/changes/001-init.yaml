@@ -1,0 +1,103 @@
+databaseChangeLog:
+- changeSet:
+    id: 1795212444952-1
+    author: florian (generated)
+    changes:
+    - createSequence:
+        incrementBy: 50
+        sequenceName: customer_address_seq
+        startValue: 1
+- changeSet:
+    id: 1795212444952-2
+    author: florian (generated)
+    changes:
+    - createSequence:
+        incrementBy: 50
+        sequenceName: customer_seq
+        startValue: 1
+- changeSet:
+    id: 1795212444952-3
+    author: florian (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: customerPK
+            defaultValueComputed: nextval('customer_seq'::regclass)
+            name: id
+            type: BIGINT
+        - column:
+            name: created_at
+            type: TIMESTAMP(6) WITHOUT TIME ZONE
+        - column:
+            name: email
+            type: VARCHAR(255)
+        - column:
+            name: last_modified_at
+            type: TIMESTAMP(6) WITHOUT TIME ZONE
+        tableName: customer
+- changeSet:
+    id: 1795212444952-4
+    author: florian (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: customer_addressPK
+            defaultValueComputed: nextval('customer_address_seq'::regclass)
+            name: id
+            type: BIGINT
+        - column:
+            name: address2
+            type: VARCHAR(255)
+        - column:
+            name: city
+            type: VARCHAR(255)
+        - column:
+            name: company_name
+            type: VARCHAR(255)
+        - column:
+            name: country
+            type: VARCHAR(255)
+        - column:
+            name: first_name
+            type: VARCHAR(255)
+        - column:
+            name: last_name
+            type: VARCHAR(255)
+        - column:
+            name: postal_code
+            type: VARCHAR(255)
+        - column:
+            name: state
+            type: VARCHAR(255)
+        - column:
+            name: street_address
+            type: VARCHAR(255)
+        - column:
+            name: vat_number
+            type: VARCHAR(255)
+        - column:
+            name: customer_id
+            type: BIGINT
+        tableName: customer_address
+- changeSet:
+    id: 1795212444952-5
+    author: florian (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: customer_id
+        baseTableName: customer_address
+        constraintName: FKr9ofa0ydsgbaqmt9leb3v5eii
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: customer
+        validate: true
+

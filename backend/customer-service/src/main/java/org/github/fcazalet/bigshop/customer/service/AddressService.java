@@ -156,7 +156,7 @@ public class AddressService {
         } else {
             CustomerAddress address = oAddress.get();
             Customer customer = address.getCustomer();
-            customer.setDefaultInvoiceAddress(address);
+//            customer.setDefaultInvoiceAddress(address);
             customerRepository.save(customer);
             logger.debug("Address {} set as default invoicing on customer {}", addressId, customerId);
             return true;

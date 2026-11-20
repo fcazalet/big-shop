@@ -8,7 +8,7 @@ public class CustomerAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @OneToOne(mappedBy = "address")
+    @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
     @Column(name = "first_name")
