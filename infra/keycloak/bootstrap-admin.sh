@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Create the first user for realm "admin".
 # Temporary password + need to change on first loggin and configure TOTP
 set -euo pipefail
