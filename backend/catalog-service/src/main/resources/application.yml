@@ -4,3 +4,19 @@ spring:
   output:
     ansi:
       enabled: always
+  application:
+    name: catalog-service
+  mvc:
+    apiversion:
+      use:
+        header: API-Version
+  jpa:
+    hibernate:
+      ddl-auto: validate # NEVER CHANGE IT
+  datasource:
+    url: jdbc:postgresql://localhost:5432/catalog
+    username: db-shop-user
+    password: ${DB_PASSWORD}
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml

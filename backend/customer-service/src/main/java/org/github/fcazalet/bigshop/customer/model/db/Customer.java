@@ -1,4 +1,4 @@
-package org.github.fcazalet.bigshop.customer.model.db;
+package io.github.fcazalet.bigshop.customer.model.db;
 
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;

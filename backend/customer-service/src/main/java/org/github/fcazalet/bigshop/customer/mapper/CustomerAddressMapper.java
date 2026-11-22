@@ -1,8 +1,8 @@
-package org.github.fcazalet.bigshop.customer.mapper;
+package io.github.fcazalet.bigshop.customer.mapper;
 
-import org.github.fcazalet.bigshop.customer.model.db.CustomerAddress;
-import org.github.fcazalet.bigshop.customer.model.request.AccountAddressRequest;
-import org.github.fcazalet.bigshop.customer.model.response.AccountAddressResponse;
+import io.github.fcazalet.bigshop.customer.model.db.CustomerAddress;
+import io.github.fcazalet.bigshop.customer.model.request.AccountAddressRequest;
+import io.github.fcazalet.bigshop.customer.model.response.AccountAddressResponse;
 
 public class CustomerAddressMapper {
 

@@ -1,4 +1,4 @@
-package org.github.fcazalet.bigshop.customer;
+package io.github.fcazalet.bigshop.customer;
 
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.ansi.AnsiColor;

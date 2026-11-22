@@ -1,7 +1,7 @@
-package org.github.fcazalet.bigshop.customer.controller;
+package io.github.fcazalet.bigshop.customer.controller;
 
-import org.github.fcazalet.bigshop.customer.model.request.RegistrationRequest;
-import org.github.fcazalet.bigshop.customer.service.RegistrationService;
+import io.github.fcazalet.bigshop.customer.model.request.RegistrationRequest;
+import io.github.fcazalet.bigshop.customer.service.RegistrationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;

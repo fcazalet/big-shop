@@ -1,4 +1,4 @@
-package org.github.fcazalet.bigshop.customer.model.response;
+package io.github.fcazalet.bigshop.customer.model.response;
 
 import java.util.Date;
 

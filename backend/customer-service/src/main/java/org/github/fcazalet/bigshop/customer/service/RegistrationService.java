@@ -1,7 +1,7 @@
-package org.github.fcazalet.bigshop.customer.service;
+package io.github.fcazalet.bigshop.customer.service;
 
-import org.github.fcazalet.bigshop.customer.model.request.RegistrationRequest;
-import org.github.fcazalet.bigshop.customer.service.keycloak.KeycloakAdminClient;
+import io.github.fcazalet.bigshop.customer.model.request.RegistrationRequest;
+import io.github.fcazalet.bigshop.customer.service.keycloak.KeycloakAdminClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

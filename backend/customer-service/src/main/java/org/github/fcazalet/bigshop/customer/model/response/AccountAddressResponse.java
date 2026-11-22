@@ -1,4 +1,4 @@
-package org.github.fcazalet.bigshop.customer.model.response;
+package io.github.fcazalet.bigshop.customer.model.response;
 
 public class AccountAddressResponse {
     private Long id;

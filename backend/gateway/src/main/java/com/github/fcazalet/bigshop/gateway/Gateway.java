@@ -1,4 +1,4 @@
-package com.github.fcazalet.bigshop.gateway;
+package io.github.fcazalet.bigshop.gateway;
 
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

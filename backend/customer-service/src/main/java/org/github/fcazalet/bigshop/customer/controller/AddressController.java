@@ -1,8 +1,8 @@
-package org.github.fcazalet.bigshop.customer.controller;
+package io.github.fcazalet.bigshop.customer.controller;
 
-import org.github.fcazalet.bigshop.customer.model.request.AccountAddressRequest;
-import org.github.fcazalet.bigshop.customer.model.response.AccountAddressResponse;
-import org.github.fcazalet.bigshop.customer.service.AddressService;
+import io.github.fcazalet.bigshop.customer.model.request.AccountAddressRequest;
+import io.github.fcazalet.bigshop.customer.model.response.AccountAddressResponse;
+import io.github.fcazalet.bigshop.customer.service.AddressService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;

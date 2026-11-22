@@ -1,4 +1,4 @@
-package com.github.fcazalet.bigshop.catalog.controller;
+package io.github.fcazalet.bigshop.catalog.controller;
 
 public class SearchController {
 }

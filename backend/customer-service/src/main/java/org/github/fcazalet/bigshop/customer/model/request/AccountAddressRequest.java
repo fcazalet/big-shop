@@ -1,4 +1,4 @@
-package org.github.fcazalet.bigshop.customer.model.request;
+package io.github.fcazalet.bigshop.customer.model.request;
 
 public class AccountAddressRequest {
     private String firstName;

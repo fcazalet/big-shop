@@ -1,6 +1,6 @@
-package org.github.fcazalet.bigshop.customer.repository;
+package io.github.fcazalet.bigshop.customer.repository;
 
-import org.github.fcazalet.bigshop.customer.model.db.CustomerAddress;
+import io.github.fcazalet.bigshop.customer.model.db.CustomerAddress;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

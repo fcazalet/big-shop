@@ -1,4 +1,4 @@
-package com.github.fcazalet.bigshop.gateway.config;
+package io.github.fcazalet.bigshop.gateway.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

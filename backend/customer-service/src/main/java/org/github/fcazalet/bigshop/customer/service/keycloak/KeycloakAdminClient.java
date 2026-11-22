@@ -1,4 +1,4 @@
-package org.github.fcazalet.bigshop.customer.service.keycloak;
+package io.github.fcazalet.bigshop.customer.service.keycloak;
 
 import java.net.URI;
 import java.time.Instant;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.github.fcazalet.bigshop.customer.config.SecurityProperties;
+import io.github.fcazalet.bigshop.customer.config.SecurityProperties;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

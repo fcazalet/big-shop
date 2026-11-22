@@ -1,7 +1,7 @@
-package org.github.fcazalet.bigshop.customer.controller;
+package io.github.fcazalet.bigshop.customer.controller;
 
-import org.github.fcazalet.bigshop.customer.model.response.AccountInformationResponse;
-import org.github.fcazalet.bigshop.customer.service.AccountService;
+import io.github.fcazalet.bigshop.customer.model.response.AccountInformationResponse;
+import io.github.fcazalet.bigshop.customer.service.AccountService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;

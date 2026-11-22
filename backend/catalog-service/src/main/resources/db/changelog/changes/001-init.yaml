@@ -1,0 +1,40 @@
+databaseChangeLog:
+- changeSet:
+    id: 1795367846627-1
+    author: fcazalet (generated)
+    changes:
+    - createSequence:
+        incrementBy: 50
+        sequenceName: product_seq
+        startValue: 1
+- changeSet:
+    id: 1795367846627-2
+    author: fcazalet (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: productPK
+            defaultValueComputed: nextval('product_seq'::regclass)
+            name: id
+            type: BIGINT
+        - column:
+            name: created_at
+            type: TIMESTAMP(6) WITHOUT TIME ZONE
+        - column:
+            name: description
+            type: VARCHAR(255)
+        - column:
+            name: last_modified_at
+            type: TIMESTAMP(6) WITHOUT TIME ZONE
+        - column:
+            name: sku
+            type: VARCHAR(255)
+        - column:
+            name: title
+            type: VARCHAR(255)
+        tableName: product
+

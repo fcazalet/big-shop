@@ -4,7 +4,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.fcazalet</groupId>
+    <groupId>io.github.fcazalet</groupId>
     <artifactId>big-shop-backend-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 

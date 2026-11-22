@@ -1,4 +1,4 @@
-package org.github.fcazalet.bigshop.customer.config;
+package io.github.fcazalet.bigshop.customer.config;
 
 import java.util.List;
 
