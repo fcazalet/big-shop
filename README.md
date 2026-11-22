@@ -113,7 +113,6 @@ Go to ``backend/`` directory and build project:
     ```bash
     cd backend/
     mvn clean install
-    mvn
     ```
 
 Then launch gateway and services:
