@@ -1,0 +1,27 @@
+<h1>Our products</h1>
+
+<div class="products">
+
+    @for (product of products; track product.id) {
+
+        <div class="product-card">
+
+            <img [src]="product.image" [alt]="product.name">
+
+            <h2>{{ product.name }}</h2>
+
+            <p>{{ product.description }}</p>
+
+            <strong>{{ product.price }} €</strong>
+
+            <a [routerLink]="['/products', product.id]">
+                View details
+            </a>
+
+        </div>
+
+    } @empty {
+        <p>No products available.</p>
+    }
+
+</div>
