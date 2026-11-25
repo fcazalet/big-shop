@@ -1,6 +1,35 @@
 # BIG-SHOP
 
-🚧Under construction🚧
+🚧project Under construction🚧
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">Architecture</a>
+    </li>
+    <li>
+      <a href="#tech-stack">Tech Stack</a>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#running-the-website">Running the Website</a></li>
+        <li><a href="#api-documentation">API Documentation</a></li>
+      </ul>
+    </li>
+    <li><a href="#issues">Issues</a></li>
+    <li><a href="#license">License</a></li>
+  </ol>
+</details>
 
 ## Architecture
  This work is a portfolio example, currently in development
@@ -115,18 +144,48 @@ Go to ``backend/`` directory and build project:
     mvn clean install
     ```
 
-Then launch gateway and services:
+6) **Build frontends**
+
+Go to ``frontend/frontoffice`` directory and build project:
+
+    ```bash
+    cd frontend/frontoffice/
+    npm install
+    ```
+
+Go to ``frontend/backoffice`` directory and build project:
+
+    ```bash
+    cd frontend/backoffice/
+    npm install
+    ```
 
 ## 📖 Usage
 
 ### ✔ Running the Website
 
-- **Development mode:**
+1) **Development mode:**
+
+Launch gateway and services:
 
     ```bash
     # One single bash script to launch them all
     ./start-all-services.sh
     ```
+
+Run frontoffice:
+
+    cd frontend/frontoffice
+    npx ng serve --port 4200
+
+Access frontoffice on http://localhost:4200.
+
+Run backoffice (admin):
+
+    cd frontend/backoffice
+    ng serve --port 4300
+
+Access backoffice on http://localhost:4300.
 
 ### 📃 API Documentation
 
